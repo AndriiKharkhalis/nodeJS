@@ -49,7 +49,7 @@ app.get('/welcome', (req, res) => {
 })
 
 mongoose.connect(MONGO_URL).then(value => {
-   // console.log(value); // видасть інфу про connection 
+   // console.log(value); // show all info about connection 
    console.log('Connection succes');
 })
 
@@ -57,14 +57,6 @@ app.listen(PORT, () => {
    console.log(`App listen ${PORT}`)
 });
 
-// video 58:30 - midlewares
-// 1:14:32 errors
-
-// middlewares в get & delete
-// чи норм боді
-// чи є емайл
-// чи не мінусовий вік
-// чи валідна _id - 24 символи
 
 // 22:43 custom errors 
 // 1:01:45 ES Lint
