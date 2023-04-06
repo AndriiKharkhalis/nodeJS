@@ -12,8 +12,6 @@ const userRouter = require('./routes/user.router');
 const reportRouter = require('./routes/report.router');
 const ApiError = require('./error/ApiError');
 
-
-
 const app = express();
 
 app.use(express.json());
@@ -39,7 +37,7 @@ function _mainErrorHandler(err, req, res, next) {
       .json({
          messege: err.message || 'Server error',
          status: err.status,
-         data: {}
+         data: {} // for example
       });
 }
 

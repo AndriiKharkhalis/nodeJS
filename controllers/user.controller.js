@@ -51,8 +51,8 @@ module.exports = {
 
          // const { userIndex } = req.params;
          // const user = DBusers[userIndex];
-         // Якщо на обгортати async/await, то ERR_HTTP_HEADERS_SENT
-         // Якщо на обгортати try/catch, то при обробці !user відповідь буде null
+         // Without async/await - ERR_HTTP_HEADERS_SENT
+         // Without try/catch - when processing !user, the answer will be null
 
          if (!user) {
             next(new ApiError(`User with ID ${userIndex} not found`, 400));
