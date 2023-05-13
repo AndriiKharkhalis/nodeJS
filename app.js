@@ -1,15 +1,12 @@
 const dotenv = require('dotenv');
 const express = require('express');
 const { engine } = require('express-handlebars');
-const { MONGO_URL } = require('./config/config');
+const { MONGO_URL, PORT } = require('./config/config');
 const mongoose = require('mongoose');
-const { PORT } = require('./config/config');
 
 dotenv.config();
 
-const carsRouter = require('./routes/cars.routers');
-const userRouter = require('./routes/user.router');
-const reportRouter = require('./routes/report.router');
+const { carsRouter, reportRouter, userRouter } = require('./routes');
 const ApiError = require('./error/ApiError');
 
 const app = express();
@@ -20,6 +17,11 @@ app.use(express.urlencoded({ extended: true }));
 app.engine('.hbs', engine({ defaultLayout: false }));
 app.set('view engine', '.hbs');
 app.set('views', './views');
+
+app.get('/welcome', (req, res) => {
+
+   res.render('welcome');
+})
 
 app.use('/cars', carsRouter);
 app.use('/reports', reportRouter);
@@ -41,11 +43,6 @@ function _mainErrorHandler(err, req, res, next) {
       });
 }
 
-app.get('/welcome', (req, res) => {
-
-   res.render('welcome');
-})
-
 mongoose.connect(MONGO_URL).then(value => {
    // console.log(value); // show all info about connection 
    console.log('Connection succes');
@@ -56,5 +53,5 @@ app.listen(PORT, () => {
 });
 
 
-// 22:43 custom errors 
+// 22:43 custom errors
 // 1:01:45 ES Lint

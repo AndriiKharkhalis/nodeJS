@@ -7,14 +7,12 @@ const userRouter = Router();
 
 
 userRouter.get('/', userController.getAllUsers);
-
 userRouter.post('/', userMiddlewares.checkIsEmailDuplicate, userMiddlewares.checkUserAge, userController.createUser);
 
-userRouter.get('/:userIndex', userMiddlewares.checkIsIdValid, userController.getUserById);
-
-userRouter.delete('/:userIndex', userMiddlewares.checkIsIdValid, userController.deleteUser);
-
-userRouter.put('/:userIndex', userMiddlewares.checkIsIdValid, userMiddlewares.checkUserAge, userController.updateUser);
+userRouter.all('/:userIndex', userMiddlewares.checkIsIdValid);
+userRouter.get('/:userIndex', userController.getUserById);
+userRouter.delete('/:userIndex', userController.deleteUser);
+userRouter.put('/:userIndex', userMiddlewares.checkUserAge, userController.updateUser);
 
 
 module.exports = userRouter;

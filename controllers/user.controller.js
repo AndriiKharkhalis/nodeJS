@@ -32,12 +32,6 @@ module.exports = {
         }
       );
 
-      // res.json({
-      //    page,
-      //    perPage: limit,
-      //    data: users,
-      //    count
-      // });
     } catch (e) {
       next(e);
     }

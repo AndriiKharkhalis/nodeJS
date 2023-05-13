@@ -15,9 +15,20 @@ module.exports = {
 
    getAllCars: async (req, res, next) => {
       try {
-         const cars = await Car.find();
+         const { limit = 20, page = 1 } = req.query;
+         const skip = (page - 1) * limit;
 
-         res.render('cars', { data: cars })
+         const cars = await Car.find().limit(limit).skip(skip);
+         const count = await Car.count();
+
+         res.render('cars',
+            {
+               page,
+               perPage: limit,
+               data: cars,
+               count
+            }
+         );
 
       } catch (e) {
          next(e)

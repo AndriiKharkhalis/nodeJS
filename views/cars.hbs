@@ -1,10 +1,12 @@
 <div style="background-color:yellow ;">
    Our cars
 
-   <ol>
+ <ol>
       {{#each data}}
-      <li>{{this.name}}</li>
+      <li>{{this}}</li>
       {{/each}}
    </ol>
-   
+<p>Page: {{page}}</p>
+<p>Per page: {{perPage}}</p>
+<p>Total count: {{count}}</p>
 </div>
