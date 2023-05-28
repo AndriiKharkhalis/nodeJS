@@ -1,10 +1,9 @@
 const { Router } = require('express');
 
-const userController = require('../controllers/user.controller');
-const userMiddlewares = require('../middlewares/user.middlewares');
+const { userController } = require('../controllers');
+const { userMiddlewares } = require('../middlewares');
 
 const userRouter = Router();
-
 
 userRouter.get('/', userController.getAllUsers);
 userRouter.post('/', userMiddlewares.checkIsEmailDuplicate, userMiddlewares.checkUserAge, userController.createUser);

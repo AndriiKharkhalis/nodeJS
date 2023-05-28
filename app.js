@@ -53,5 +53,4 @@ app.listen(PORT, () => {
 });
 
 
-// 22:43 custom errors
-// 1:01:45 ES Lint
+// 24:02 auth sevice
